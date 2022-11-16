@@ -18,7 +18,6 @@ const registerAndLogin = async (userProps = {}) => {
   // Create an "agent" that gives us the ability
   // to store cookies between requests in a test
   const agent = request.agent(app);
-
   // Create a user to sign in with
   const user = await UserService.create({ ...mockUser, ...userProps });
 
@@ -71,6 +70,7 @@ describe('lazy-bouncer routes', () => {
 
   it('should return a 403 when signed in but not admin and listing all users', async () => {
     const [agent] = await registerAndLogin();
+
     const res = await agent.get('/api/v1/users');
 
     expect(res.body).toEqual({
@@ -79,7 +79,7 @@ describe('lazy-bouncer routes', () => {
     });
   });
 
-  it('should return a list of users if signed in as admin', async () => {
+  it.only('should return a list of users if signed in as admin', async () => {
     const [agent, user] = await registerAndLogin({ email: 'admin' });
     const res = await agent.get('/api/v1/users');
 
