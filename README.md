@@ -35,3 +35,5 @@ Your task is to finish securing the API by building out the necessary middleware
 | GET `/api/v1/users/me` is only accessible to logged in users                  | 2      |
 | GET `/api/v1/users` is only accessible to the user with a username of `admin` | 2      |
 | Existing tests pass (remove .skip from each test)                             | 2      |
+
+Changed secrets in Github
